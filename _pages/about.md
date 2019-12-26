@@ -1,23 +1,32 @@
 ---
 layout: about
 permalink: /
-title: <strong>Your</strong> Name
-description: <a href="">Affiliations</a>. Address. Contacts. Moto. Etc.
+title: Yongsoo Kim
+description: Department of Pathology, Amsterdam UMC, Cancer Center Amsterdam, Amsterdam, the Netherlands.
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: yongsoo.jpg
   address: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>CCA.1.28, De Boelelaan 1118, 1182 DB</p>
+    <p>Amsterdam, </p>
+    <p>the Netherlands</p>
 
 news: true
 social: true
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com){:target="\_blank"}. You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+<p style="text-align:justify">
+I am an assistant professor in oncogenomics. I am interested in how informatics technologies (especially machine learning) can make our life better, especially in the treatment of cancer patients. To this end, I exposed myself to both biology and computer science during my training. 
+</p>
 
-Put your address / P.O. box / other info right below your picture. You can also disable any these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/publications/) automatically.
+<p style="text-align:justify">
+During Ph.D. training, I had participated in the systems biology lab and machine learning group, working on identifying better ways to model biological networks. After Ph.D., I continued my academic career in cancer genomics as a postdoctoral fellow at the NKI, where I worked as a part of the group of prof. dr. Wilbert Zwart, a molecular biologist, and the group of prof. dr. Lodewyk Wessels, a computational scientist. 
+</p>
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](http://fortawesome.github.io/Font-Awesome/){:target="\_blank"} and [Academicons](https://jpswalsh.github.io/academicons/){:target="\_blank"}, like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+
+<p style="text-align:justify">
+As of 1st of October 2018, I started as an assistant professor in oncogenomics, at Cancer Center Amsterdam (CCA), Amsterdam UMC, location VUmc. At the current position, I am delighted with having many interactions with clinicians, pathologists, and oncologists who see patients, getting more stimulation towards translational research.
+</p>
+
+
