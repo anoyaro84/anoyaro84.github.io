@@ -128,6 +128,9 @@ Python should be used to compile vim, using the following options for configurat
 
 <p>Check <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source">this thread</a> for dependancy of the installation.</p>
 
+<p>In my case (Linux mint), I need to set <code class="language-plaintext highlighter-rouge">LDFLAGS</code> to <code class="language-plaintext highlighter-rouge">-fno-lto</code> before configuration.
+Otherwise <code class="language-plaintext highlighter-rouge">gcc</code> gave error. (check <a href="https://github.com/halide/Halide/issues/2713">this thread</a>)</p>
+
 <h3> 2. Plugin installation with Vundle </h3>
 
 <p>Then, plugins are installed using Vundle, mostly conscerns editing <code class="language-plaintext highlighter-rouge">.vimrc</code>. 
@@ -152,9 +155,11 @@ For the actual installation, execute <code class="language-plaintext highlighter
   <li><a href="https://github.com/gaalcaras/ncm-R">ncm-R</a> - for asynchronous autocompletion when editing R scripts </li>
 </ul>
 
-<h3> 3. Supporting python sytax support for Snakefile </h3>
+<p>Note that <code class="language-plaintext highlighter-rouge">pynvim</code> and <code class="language-plaintext highlighter-rouge">neovim</code> are required for some of the plugins. (install via <code class="language-plaintext highlighter-rouge">conda</code> or <code class="language-plaintext highlighter-rouge">pip</code>)</p>
 
-<p>I obtained the <a href="https://bitbucket.org/jayhesselberth/snakemake/src/master/misc/vim/syntax/snakemake.vim">syntax definition of snakemake</a> for vim by Jay Hesselberth (@ University of Colorado), and then merely added the following line to execute <code class="language-plaintext highlighter-rouge">jedi-vim</code>, which is only executed for python files.</p>
+<h3> 3. python sytax support for Snakefile </h3>
+
+<p>I obtained the <a href="https://bitbucket.org/jayhesselberth/snakemake/src/master/misc/vim/syntax/snakemake.vim">syntax definition of snakemake</a> for vim by Jay Hesselberth (@ University of Colorado), and then merely added the following line to start <code class="language-plaintext highlighter-rouge">jedi-vim</code>, which is executed only for python files (<code class="language-plaintext highlighter-rouge">.py</code>) by default.</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell">runtime! ftplugin/python/jedi.vim after/ftplugin/python/jedi.vim</code></pre></figure>
 
@@ -165,7 +170,7 @@ For instance, you will see autocompletion for a python package if the active env
 Vice versa, if you activate an enviornment that lacks the package, then you will see no autocompletion for this package.
 Also, if there is an specific version of R installed within an environment, then the very version of R will be used in Nvim-R upon activation of the environment.</p>
 
-<p>There is a catch though. Some plugin may not function properly, if you have different version of python available in the environment.
+<p><strong>There is a catch though.</strong> Some plugin may not function properly, if you have different version of python available in the environment.
 Especially, some plugins particularly depends on <code class="language-plaintext highlighter-rouge">python 3</code>, so they may not work when <code class="language-plaintext highlighter-rouge">python 2</code> is used.</p>
 
 <p>Also, you need to install <code class="language-plaintext highlighter-rouge">pynvim</code> and <code class="language-plaintext highlighter-rouge">neovim</code> (from <code class="language-plaintext highlighter-rouge">conda-forge</code> channel) in each environment, using: <code class="language-plaintext highlighter-rouge">conda install -c conda-forge neovim pynvim</code>.</p>
@@ -173,28 +178,25 @@ Especially, some plugins particularly depends on <code class="language-plaintext
 <h3> The final outcome files: </h3>
 
 <ul>
-    <li> <a href="/assets/scripts/vimrc">.vimrc</a> (to be located at ~/)
-    <li> <a href="/assets/scripts/snakemake.vim">snakmake.vim</a> (to be located at ~/.vim/syntax/)
-&lt;/ul&gt;
-
-
+    <li> <a href="/assets/scripts/vimrc">.vimrc</a> (to be located at ~/)</li>
+    <li> <a href="/assets/scripts/snakemake.vim">snakmake.vim</a> (to be located at ~/.vim/syntax/) </li>
+</ul>
 
 <hr />
 
-Further reference:
+<p>Further reference:</p>
 
 <ul>
   <li> I took the useful vim plugins for Python editing from the following <a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/"> instruction</a>.</li>
 </ul>
 
-</li></li></ul>
 
   </article>
 
   
     <div id="disqus_thread"></div>
     <script type="text/javascript">
-      var disqus_shortname  = 'al-folio';
+      var disqus_shortname  = 'Y.Kim';
       var disqus_identifier = '/blog/2019/vim-setting';
       var disqus_title      = "Vim environment creation";
       (function() {

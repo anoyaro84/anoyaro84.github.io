@@ -42,6 +42,9 @@ Python should be used to compile vim, using the following options for configurat
 {% endhighlight %}
 Check <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source">this thread</a> for dependancy of the installation.
 
+In my case (Linux mint), I need to set `LDFLAGS` to `-fno-lto` before configuration.
+Otherwise `gcc` gave error. (check <a href="https://github.com/halide/Halide/issues/2713">this thread</a>)
+
 
 <h3> 2. Plugin installation with Vundle </h3>
 
@@ -69,10 +72,11 @@ Key plugins are:
   <li><a href="https://github.com/gaalcaras/ncm-R">ncm-R</a> - for asynchronous autocompletion when editing R scripts </li>
 </ul>
 
+Note that `pynvim` and `neovim` are required for some of the plugins. (install via `conda` or `pip`)
 
 <h3> 3. python sytax support for Snakefile </h3>
 
-I obtained the <a href="https://bitbucket.org/jayhesselberth/snakemake/src/master/misc/vim/syntax/snakemake.vim">syntax definition of snakemake</a> for vim by Jay Hesselberth (@ University of Colorado), and then merely added the following line to execute `jedi-vim`, which is only executed for python files.
+I obtained the <a href="https://bitbucket.org/jayhesselberth/snakemake/src/master/misc/vim/syntax/snakemake.vim">syntax definition of snakemake</a> for vim by Jay Hesselberth (@ University of Colorado), and then merely added the following line to start `jedi-vim`, which is executed only for python files (`.py`) by default.
 
 {% highlight shell %}
 runtime! ftplugin/python/jedi.vim after/ftplugin/python/jedi.vim
@@ -87,7 +91,7 @@ For instance, you will see autocompletion for a python package if the active env
 Vice versa, if you activate an enviornment that lacks the package, then you will see no autocompletion for this package.
 Also, if there is an specific version of R installed within an environment, then the very version of R will be used in Nvim-R upon activation of the environment.
 
-There is a catch though. Some plugin may not function properly, if you have different version of python available in the environment.
+<strong>There is a catch though.</strong> Some plugin may not function properly, if you have different version of python available in the environment.
 Especially, some plugins particularly depends on `python 3`, so they may not work when `python 2` is used.
 
 Also, you need to install `pynvim` and `neovim` (from `conda-forge` channel) in each environment, using: `conda install -c conda-forge neovim pynvim`.
@@ -97,8 +101,8 @@ Also, you need to install `pynvim` and `neovim` (from `conda-forge` channel) in 
 <h3> The final outcome files: </h3>
 
 <ul>
-    <li> <a href="/assets/scripts/vimrc">.vimrc</a> (to be located at ~/)
-    <li> <a href="/assets/scripts/snakemake.vim">snakmake.vim</a> (to be located at ~/.vim/syntax/)
+    <li> <a href="/assets/scripts/vimrc">.vimrc</a> (to be located at ~/)</li>
+    <li> <a href="/assets/scripts/snakemake.vim">snakmake.vim</a> (to be located at ~/.vim/syntax/) </li>
 </ul>
 
 
