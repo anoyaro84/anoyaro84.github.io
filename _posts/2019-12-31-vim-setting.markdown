@@ -70,7 +70,7 @@ Key plugins are:
 </ul>
 
 
-<h3> 3. Supporting python sytax support for Snakefile </h3>
+<h3> 3. python sytax support for Snakefile </h3>
 
 I obtained the <a href="https://bitbucket.org/jayhesselberth/snakemake/src/master/misc/vim/syntax/snakemake.vim">syntax definition of snakemake</a> for vim by Jay Hesselberth (@ University of Colorado), and then merely added the following line to execute `jedi-vim`, which is only executed for python files.
 
