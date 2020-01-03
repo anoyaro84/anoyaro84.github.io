@@ -171,7 +171,7 @@ Vice versa, if you activate an enviornment that lacks the package, then you will
 Also, if there is an specific version of R installed within an environment, then the very version of R will be used in Nvim-R upon activation of the environment.</p>
 
 <p><strong>There is a catch though.</strong> Some plugin may not function properly, if you have different version of python available in the environment.
-Especially, some plugins particularly depends on <code class="language-plaintext highlighter-rouge">python 3</code>, so they may not work when <code class="language-plaintext highlighter-rouge">python 2</code> is used.</p>
+Especially, some plugins require <code class="language-plaintext highlighter-rouge">python 3</code>, so they will not work (at least, not properly) when <code class="language-plaintext highlighter-rouge">python 2</code> is there.</p>
 
 <p>Also, you need to install <code class="language-plaintext highlighter-rouge">pynvim</code> and <code class="language-plaintext highlighter-rouge">neovim</code> (from <code class="language-plaintext highlighter-rouge">conda-forge</code> channel) in each environment, using: <code class="language-plaintext highlighter-rouge">conda install -c conda-forge neovim pynvim</code>.</p>
 

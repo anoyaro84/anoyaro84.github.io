@@ -1,7 +1,7 @@
 ---
 layout: page
-title: ChIP-seq data analysis 
-description: pipelines and scripts for handling ChIP-seq data
+title: ChIP-seq analysis 
+description: pipelines/scripts for ChIP-seq
 img:
 ---
 
