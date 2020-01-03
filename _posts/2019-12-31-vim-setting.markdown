@@ -7,7 +7,7 @@ comments: true
 ---
 
 
-Here, I would like to keep how I constructed my vim environment.
+Here, I would like to keep a note on how I constructed my vim environment.
 In particular, I need the following features for my python development.
 
 
