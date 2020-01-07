@@ -49,7 +49,13 @@ Otherwise `gcc` gave error. (check <a href="https://github.com/halide/Halide/iss
 <h3> 2. Plugin installation with Vundle </h3>
 
 Then, plugins are installed using Vundle, mostly conscerns editing `.vimrc`. 
-To install a plugin with Vundle:
+To install Vundle, run the following command (see also the <a href="https://github.com/VundleVim/Vundle.vim">official repository of Vundle</a>).
+
+{% highlight shell %}
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+{% endhighlight %}
+
+To install a plugin with Vundle, add the following in `.vimrc`:
 
 {% highlight shell %}
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -59,11 +65,12 @@ Plugin 'NAME_OF_THE_PLUGIN'
 
 call vundle#end()            " required
 {% endhighlight %}
+
 Note that for plugins from a github repository can be referred like: `ncm2/ncm2`.
 For the actual installation, execute `:PluginInstall` once after starting vim.
 
 
-Key plugins are:
+Key plugins include (final `.vimrc` is also available below):
 
 <ul>
   <li><a href="https://github.com/davidhalter/jedi-vim">jedi-vim</a> - python auto-completion support</li>
