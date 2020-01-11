@@ -2,7 +2,7 @@
 layout: post
 title: Vim environment creation
 date: 2019-12-31 15:09:00
-description: an example of a blog post with some code
+description: a note for setting up vim environment
 comments: true
 ---
 
