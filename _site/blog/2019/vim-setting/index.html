@@ -96,7 +96,7 @@
   </header>
 
   <article class="post-content">
-    <p>Here, I would like to keep how I constructed my vim environment.
+    <p>Here, I would like to keep a note on how I constructed my vim environment.
 In particular, I need the following features for my python development.</p>
 
 <h4 id="my-need-in-the-ideal-world">My need (in the ideal world)</h4>
@@ -134,7 +134,11 @@ Otherwise <code class="language-plaintext highlighter-rouge">gcc</code> gave err
 <h3> 2. Plugin installation with Vundle </h3>
 
 <p>Then, plugins are installed using Vundle, mostly conscerns editing <code class="language-plaintext highlighter-rouge">.vimrc</code>. 
-To install a plugin with Vundle:</p>
+To install Vundle, run the following command (see also the <a href="https://github.com/VundleVim/Vundle.vim">official repository of Vundle</a>).</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</code></pre></figure>
+
+<p>To install a plugin with Vundle, add the following in <code class="language-plaintext highlighter-rouge">.vimrc</code>:</p>
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">set </span>rtp+<span class="o">=</span>~/.vim/bundle/Vundle.vim
 call vundle#begin<span class="o">()</span>
@@ -146,7 +150,7 @@ call vundle#end<span class="o">()</span>            <span class="s2">" required<
 <p>Note that for plugins from a github repository can be referred like: <code class="language-plaintext highlighter-rouge">ncm2/ncm2</code>.
 For the actual installation, execute <code class="language-plaintext highlighter-rouge">:PluginInstall</code> once after starting vim.</p>
 
-<p>Key plugins are:</p>
+<p>Key plugins include (final <code class="language-plaintext highlighter-rouge">.vimrc</code> is also available below):</p>
 
 <ul>
   <li><a href="https://github.com/davidhalter/jedi-vim">jedi-vim</a> - python auto-completion support</li>

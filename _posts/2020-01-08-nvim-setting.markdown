@@ -21,6 +21,16 @@ I also adapted previous `.vimrc` for the `Nvim-R` configuration.
 
 <hr>
 
+<h3> How does it look? </h3>
+
+<h4> Working with python: </h4>
+<img src="{{site.baseurl}}/assets/img/render1578870821062.gif">
+
+<h4> Working with R: </h4>
+<img src="{{site.baseurl}}/assets/img/render1578871944214.gif">
+
+
+
 <h3> 1. Neovim installation </h3>
 
 Neovim is installed using the following command:
@@ -248,8 +258,14 @@ let airline#extensions#ale#warning_symbol = 'W:'
 For autocompletion, vim needs an active R/Python3 session.
 By default, the available R/python3 in the active environment is used.
 
-In case of python, `jedi` package is required for the communication (which is used in `jedi-vim`).
-So `jedi` package is required in each conda environment (install using `pip`).
+In case of python,the following packages are required:
+<ul>
+   <li> `jedi` package for cod completion. </li>
+   <li> `flake8` for code linting. </li>
+   <li> `autopep8` for code formatting. </li>
+</ul>
+
+So these package are required in each conda environment (install using `pip`).
 
 For R, so far I am not aware of any necessary package.
 
