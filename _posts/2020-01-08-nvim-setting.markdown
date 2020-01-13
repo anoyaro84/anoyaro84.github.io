@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Switching to neovim
-date: 2019-01-09 15:09:00
+date: 2020-01-09 15:09:00
 description: another effort to set up environment - neovim
 comments: true
 ---
