@@ -8,7 +8,7 @@ comments: true
 
 
 I recently set up `vim`, and was very happy about this.
-However, I also learned some features lacking. Specifically,
+However, I also learned some features are lacking. Specifically,
 
 <ul>
    <li> Autocompletion does not work swiftly (need to type `Ctrl+Space`). </li>
@@ -225,7 +225,7 @@ augroup NCM2
   set completeopt=noinsert,menuone,noselect
   " When the <Enter> key is pressed while the popup menu is visible, it only
   " hides the menu. Use this mapping to close the menu and also start a new line.
-  inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+  " inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
   " uncomment this block if you use vimtex for LaTex
   " autocmd Filetype tex call ncm2#register_source({
   "           \ 'name': 'vimtex',
@@ -260,7 +260,7 @@ By default, the available R/python3 in the active environment is used.
 
 In case of python,the following packages are required:
 <ul>
-   <li> `jedi` package for cod completion. </li>
+   <li> `jedi` package for code completion. </li>
    <li> `flake8` for code linting. </li>
    <li> `autopep8` for code formatting. </li>
 </ul>
