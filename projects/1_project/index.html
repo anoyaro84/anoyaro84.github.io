@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Yongsoo Kim</title>
+  <title>Yongsoo Kim | ChIP-seq analysis</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
@@ -15,7 +15,7 @@
   <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="/blog/">
+  <link rel="canonical" href="/projects/1_project/">
 </head>
 
 
@@ -88,30 +88,52 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>Postings</h1>
-  <h2></h2>
-</div>
+        <div class="post">
 
+  <header class="post-header">
+    <h1 class="post-title">ChIP-seq analysis</h1>
+    <h5 class="post-description">pipelines/scripts for ChIP-seq</h5>
+  </header>
 
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2020/nvim-setting/">Switching to neovim</a></h2>
-      <p class="post-meta">January 9, 2020 — 16:09</p>
-      <p>another effort to set up environment - neovim</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2019/vim-setting/">Vim environment creation</a></h2>
-      <p class="post-meta">December 31, 2019 — 16:09</p>
-      <p>a note for setting up vim environment</p>
-    </li>
-  
+  <article class="post-content ChIP-seq analysis clearfix">
+    <p>I have been involved in couple of projects heavily based on ChIP-seq data.
+See publications:</p>
+<ol>
+  <li> male breast cancer project - published in <a href="https://www.nature.com/articles/s41467-018-02856-2">Nature Communication</a></li>
+  <li> prostate cancer project - published in <a href="https://www.nature.com/articles/s41467-018-07270-2">Nature Communication</a></li>
+</ol>
+
+<p>I wrote a <code class="language-plaintext highlighter-rouge">snakemake</code> pipeline and python scripts for robust/reproducible processing and visualization of the data.</p>
+
+<h3> Snakemake pipeline </h3>
+
+<p>The pipeline is hosted on the <a href="https://github.com/anoyaro84/snakemake_ChIPseq">github repository</a>.</p>
+
+<p>Roughly, the pipeline takes the following steps to produce the outcome:</p>
+
+<ul>
+  <li> Downloading raw data (either bam/fastq files) from the specified locations (local, remote, or GEO) in DataList.csv </li>
+  <li> Alignment with bwa-mem (in case of fastq files) </li>
+  <li> Marking duplicate reads with picard </li>
+  <li> Removing low-quality reads (retain reads with mapping quality &gt; 20) </li>
+  <li> Peak calling with MACS1.4/MACS2/DFilter (support more than one peak callers) </li>
+  <li> Taking intersection between the peaks </li>
 </ul>
 
+<p>See also README.md on the repository.</p>
+
+<h3> Python scripts for visualization </h3>
+
+<p><code class="language-plaintext highlighter-rouge">pybedtools</code>(see also <a href="https://daler.github.io/pybedtools/">online documentation</a>) is a python wrapper of the <a href="https://bedtools.readthedocs.io/en/latest/">bedtools</a>.</p>
 
 
+  </article>
+
+  
+
+  
+
+</div>
 
       </div>
     </div>
