@@ -5,7 +5,7 @@ name: Build and deploy Jekyll site to GitHub Pages
 on:
   push:
     branches:
-      - main # or master, depending on your default branch
+      - master # or master, depending on your default branch
 
 jobs:
   github-pages:
