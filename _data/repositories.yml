@@ -1,0 +1,12 @@
+github_users:
+  - anoyaro84
+
+repo_description_lines_max: 2
+
+github_repos:
+  - anoyaro84/spatstat_vectra
+  - anoyaro84/ChIP-seq_analysis
+  - tgac-vumc/BLADE
+  - tgac-vumc/Statescope
+  - tgac-vumc/QDNAseq.snakemake
+  - tgac-vumc/WES-snake

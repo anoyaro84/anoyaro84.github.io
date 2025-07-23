@@ -1,0 +1,136 @@
+- title: General Information
+  type: map
+  contents:
+    - name: Full Name
+      value: Yongsoo Kim 
+    - name: Date of Birth
+      value: 7th Sep 1984
+    - name: ORCiD
+      value: <a href="https://orcid.org/0000-0002-2995-2131"> 0000-0002-2995-2131 </a>
+
+
+- title: Education
+  type: time_table
+  contents:
+    - title: PhD (combined with MSc)
+      institution: POSTECH, Pohang, South Korea
+      year: 2007.3-2013.8
+      description:
+        - School of Interdisciplinary Bioscience and Bioengineering (I-BIO).
+        - title: Joint Participation.
+          contents:
+            - Machine Learning Lab (Prof. Seungjin Choi).
+            - Systems Biology Lab (Prof. Daehee Hwang).
+        - Thesis - “Probabilistic Inference in Context-specific Dynamic Networks"
+    - title: BSc
+      institution: POSTECH, Pohang, South Korea
+      year: 2003.3-2007.2
+      description:
+          - Computer Science and Engineering (CSE)
+
+- title: Experience
+  type: time_table
+  contents:
+    - title: Postdoctoral fellow 
+      institution: Deagu Gyeongbuk Institute of Science & Technology (DGIST), Daegu, South Korea
+      year: 2013.9-2014.12
+      description:
+        - Systems Biology Lab (Prof. Daehee Hwang)
+
+    - title: Postdoctoral fellow
+      institution: 
+      year: 2015.1-2018.9
+      description:
+        - The Netherlands Cancer Institute (the NKI), Plesmanlaan 121, 1066 DX Amsterdam, The Netherlands.
+        - title: Joint Participation.
+          contents:
+            - Wilbert Zwart Group 
+            - Computational Cancer Biology Group (Prof. dr. Lodewyk Wessels)
+
+    - title: Assistant Professor of multiomics data science 
+      institution: Department of Pathology, Amsterdam UMC
+      year: 2018.10 - current
+      description:
+        - Cancer Center Amsterdam
+
+- title: Open Source Projects
+  type: time_table
+  contents:
+    - title: <a href="https://github.com/tgac-vumc/BLADE">Bayesian Log-normal DEconvolution (BLADE) </a>
+      year: 2021 - 2025
+      description: Python package for log-normal deconovlution method. It is mostly succeeded by Statescope.
+    - title: <a href="https://tgac-vumc.github.io/Statescopeweb/"> Statescope </a>
+      year: 2025 - 
+      description: Integrative deconvolution method tailored for cell state analysis. Successor of BLADE. Features pyTorch implementation. R package is also under development.
+
+- title: Honors and Awards
+  type: time_table
+  contents:
+    - year: 2019
+      items:
+        - Young Investigator Award
+        - Leukemia Resarch Foundation 
+
+- title: Projects / Fundings
+  type: time_table
+  contents:
+    - title: SPACETIME 
+      year: 2024-2029
+      description:
+         - Horizon Europe (co-PI)
+         - <a href="https://amsterdamumc.org/en/research/institutes/cancer-center-amsterdam/news/spacetime-project-kicks-off-in-amsterdam-unraveling-lung-tumors-in-space-and-time.htm"> Announcement</a>
+
+    - title: Cell2Sample
+      year: 2025-2029
+      description:
+         - Stitching ADORE
+         - <a href="https://www.adore.amsterdamumc.nl/cell2sample/"> Announcement </a>
+
+    - title: GEN-BioDORA
+      year: 2024-2029
+      description:
+          - stitching ADORE (co-PI)
+          - <a href="https://www.adore.amsterdamumc.nl/gen-biodora/"> Announcement </a>
+
+    - title: Establishing a Reproducible and Accessible Bioinformatics Framework to determine Tumor microenvironment and heterogeneity
+      year: 2023-2027
+      description:
+        - NWO startergrant
+    
+    - title: An affordable RNA profiling-based tumor microenvironment characterization for the optimal care of cervical cancer patients
+      year: 2023-2026
+      description:
+        - HealthHolland
+        - <a href="https://www.youtube.com/watch?v=ssB9mS5s5rg">Accompanying Video</a>
+
+    - title: A comprehensive multi-layer characterization of intra-tumoral heterogeneity in pancreatic ductal adenocarcinoma
+      year: 2022-2026
+      description:
+          - Dutch Cancer Society (KWF - 13774)
+          - <a href="https://www.amsterdamumc.org/nl/vandaag/kwf-geeft-amsterdam-umc-ruim-86-miljoen-voor-kankeronderzoek.htm">Announcement</a>
+
+    - title: A computational framework to address within-tumour heterogeneity of pancreatic ductal adenocarcinoma
+      year: 2020-2021
+      description:
+        - Stitching Cancer Center Amsterdam
+
+- title: PhD students supervision
+  type: nested_list
+  contents:
+    - title: Barbara Andrade Barbosa
+      items:
+        - co-promoter
+        - Thesis title - "Solutions to navigate the oncogenomic maze through advanced computational methods"
+        - Thesis submitted to reading committee
+
+    - title: Jurriaan Janssen
+      items:
+        - co-promoter
+        - Lung cancer / Deconvolution (Statescope) / Bioinformatics
+
+    - title: Mischa Steketee
+      items:
+        - co-promoter (funded by KWF)
+        - Pancreatic cancer / Deconvolution (Statescope) / Bioinformatics
+
+
