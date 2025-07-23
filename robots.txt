@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://anoyaro84.github.io/sitemap.xml

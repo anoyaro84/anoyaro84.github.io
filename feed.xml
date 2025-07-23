@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://anoyaro84.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://anoyaro84.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-07-23T21:11:14+00:00</updated><id>https://anoyaro84.github.io/feed.xml</id><title type="html">blank</title><subtitle>Webpage based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">Switching to neovim</title><link href="https://anoyaro84.github.io/blog/2020/nvim-setting/" rel="alternate" type="text/html" title="Switching to neovim"/><published>2020-01-09T15:09:00+00:00</published><updated>2020-01-09T15:09:00+00:00</updated><id>https://anoyaro84.github.io/blog/2020/nvim-setting</id><content type="html" xml:base="https://anoyaro84.github.io/blog/2020/nvim-setting/"><![CDATA[<p>I recently set up <code class="language-plaintext highlighter-rouge">vim</code>, and was very happy about this. However, I also learned some features are lacking. Specifically,</p> <ul> <li> Autocompletion does not work swiftly (need to type `Ctrl+Space`). </li> <li> Some features of `Nvim-R` is not functioning in vim. </li> </ul> <p>The primary reference for setting up neovim is <a href="https://yufanlu.net/2018/09/03/neovim-python/">a blog posting of Yufan Lu</a>. I also adapted previous <code class="language-plaintext highlighter-rouge">.vimrc</code> for the <code class="language-plaintext highlighter-rouge">Nvim-R</code> configuration.</p> <hr/> <h3> How does it look? </h3> <h4> Working with python: </h4> <p><img src="/assets/img/render1578870821062.gif"/></p> <h4> Working with R: </h4> <p><img src="/assets/img/render1578871944214.gif"/></p> <h3> 1. Neovim installation </h3> <p>Neovim is installed using the following command:</p> <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">sudo </span>apt-get <span class="nb">install </span>neovim</code></pre></figure> <p>On my Mint, it comes with python3 component by default. It can be checked with (in <code class="language-plaintext highlighter-rouge">nvim</code>):</p> <figure class="highlight"><pre><code class="language-shell" data-lang="shell">:echo has<span class="o">(</span><span class="s1">'python3'</span><span class="o">)</span></code></pre></figure> <p>which should return <code class="language-plaintext highlighter-rouge">1</code> when python3 is supported.</p> <h3> 2. Installing plugins </h3> <p>I used <code class="language-plaintext highlighter-rouge">vim-plug</code> to install plugins. (see <a href="https://github.com/junegunn/vim-plug">official repo</a>) The installation of <code class="language-plaintext highlighter-rouge">vim-plug</code> can be done by:</p> <figure class="highlight"><pre><code class="language-shell" data-lang="shell">curl <span class="nt">-fLo</span> ~/.local/share/nvim/site/autoload/plug.vim <span class="nt">--create-dirs</span> <span class="se">\</span>
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</code></pre></figure> <p>Then, the plugin is installed by configuring <code class="language-plaintext highlighter-rouge">~/.config/nvim/init.vim</code>. The part of <code class="language-plaintext highlighter-rouge">init.vim</code> specifying the list of plugins is below:</p> <figure class="highlight"><pre><code class="language-config" data-lang="config"><span class="err">"</span> <span class="n">Obtained</span> <span class="n">from</span>:
+<span class="s2">" https://realpython.com/vim-and-python-a-match-made-in-heaven/"</span>
+
+
+<span class="n">set</span> <span class="n">nocompatible</span>              <span class="err">"</span> <span class="n">required</span>
+<span class="n">filetype</span> <span class="n">off</span>                  <span class="err">"</span> <span class="n">required</span>
+
+<span class="err">"</span> <span class="n">set</span> <span class="n">the</span> <span class="n">runtime</span> <span class="n">path</span> <span class="n">to</span> <span class="n">include</span> <span class="n">Vundle</span> <span class="n">and</span> <span class="n">initialize</span>
+<span class="err">"</span> <span class="n">set</span> <span class="n">rtp</span>+=~/.<span class="n">vim</span>/<span class="n">bundle</span>/<span class="n">Vundle</span>.<span class="n">vim</span>
+<span class="n">call</span> <span class="n">plug</span><span class="c">#begin()
+</span><span class="err">"</span> <span class="n">call</span> <span class="n">vundle</span><span class="c">#begin()
+</span>
+
+<span class="err">"</span> <span class="n">UI</span> <span class="n">related</span>
+<span class="n">Plug</span> <span class="s1">'chriskempson/base16-vim'</span>
+<span class="n">Plug</span> <span class="s1">'vim-airline/vim-airline'</span>
+<span class="n">Plug</span> <span class="s1">'vim-airline/vim-airline-themes'</span>
+
+<span class="err">"</span> <span class="n">Better</span> <span class="n">Visual</span> <span class="n">Guide</span>
+<span class="n">Plug</span> <span class="s1">'Yggdroot/indentLine'</span>
+
+<span class="err">"</span> <span class="n">syntax</span> <span class="n">check</span>
+<span class="n">Plug</span> <span class="s1">'w0rp/ale'</span>
+  
+<span class="err">"</span> <span class="n">Autocomplete</span>
+<span class="n">Plug</span> <span class="s1">'ncm2/ncm2'</span>
+<span class="n">Plug</span> <span class="s1">'roxma/nvim-yarp'</span>
+<span class="n">Plug</span> <span class="s1">'ncm2/ncm2-bufword'</span>
+<span class="n">Plug</span> <span class="s1">'ncm2/ncm2-path'</span>
+<span class="n">Plug</span> <span class="s1">'ncm2/ncm2-jedi'</span>
+  
+<span class="err">"</span> <span class="n">Formater</span>
+<span class="n">Plug</span> <span class="s1">'Chiel92/vim-autoformat'</span>
+
+<span class="err">"</span> <span class="n">Enable</span> <span class="n">folding</span> <span class="n">with</span> <span class="n">the</span> <span class="n">spacebar</span>
+<span class="n">Plug</span> <span class="s1">'tmhedberg/SimpylFold'</span>
+
+<span class="s2">" File browsing + Git integration"</span>
+<span class="n">Plug</span> <span class="s1">'scrooloose/nerdtree'</span>
+<span class="n">Plug</span> <span class="s1">'Xuyuanp/nerdtree-git-plugin'</span>
+
+<span class="s2">" Super searching "</span>
+<span class="n">Plug</span> <span class="s1">'kien/ctrlp.vim'</span>
+
+
+<span class="s2">" R plugin "</span>
+<span class="n">Plug</span> <span class="s1">'jalvesaq/Nvim-R'</span>
+
+<span class="n">Plug</span> <span class="s1">'ncm2/ncm2'</span>
+<span class="n">Plug</span> <span class="s1">'roxma/nvim-yarp'</span>
+<span class="n">Plug</span> <span class="s1">'gaalcaras/ncm-R'</span>
+
+<span class="n">if</span> !<span class="n">has</span>(<span class="s1">'nvim'</span>)
+    <span class="n">Plug</span> <span class="s1">'roxma/vim-hug-neovim-rpc'</span>
+<span class="n">endif</span>
+
+<span class="n">Plug</span> <span class="s1">'ncm2/ncm2-bufword'</span>
+<span class="n">Plug</span> <span class="s1">'ncm2/ncm2-path'</span>
+
+<span class="err">"</span> <span class="n">Optional</span>: <span class="n">for</span> <span class="n">snippet</span> <span class="n">support</span>
+<span class="err">"</span> <span class="n">Further</span> <span class="n">configuration</span> <span class="n">might</span> <span class="n">be</span> <span class="n">required</span>, <span class="n">read</span> <span class="n">below</span>
+<span class="n">Plug</span> <span class="s1">'sirver/UltiSnips'</span>
+<span class="err">"</span> <span class="n">Plug</span> <span class="s1">'ncm2/ncm2-ultisnips'</span>
+
+<span class="err">"</span> <span class="n">Optional</span>: <span class="n">better</span> <span class="n">Rnoweb</span> <span class="n">support</span> (<span class="n">LaTeX</span> <span class="n">completion</span>)
+<span class="n">Plug</span> <span class="s1">'lervag/vimtex'</span>
+
+
+
+<span class="err">"</span> <span class="n">All</span> <span class="n">of</span> <span class="n">your</span> <span class="n">Plugins</span> <span class="n">must</span> <span class="n">be</span> <span class="n">added</span> <span class="n">before</span> <span class="n">the</span> <span class="n">following</span> <span class="n">line</span>
+<span class="s2">" call vundle#end()            "</span> <span class="n">required</span>
+<span class="n">call</span> <span class="n">plug</span><span class="err">#</span><span class="n">end</span>()</code></pre></figure> <p>Then, the installation can be done by <code class="language-plaintext highlighter-rouge">:PlugInstall</code> after starting <code class="language-plaintext highlighter-rouge">nvim</code>. (needed only once</p> <h3> 3. Other configurations </h3> <p>There are other settings many of which concerns behavior of plugins. It is mostly copied from <a href="https://yufanlu.net/2018/09/03/neovim-python/">the blog posting of Yufan Lu</a>.</p> <figure class="highlight"><pre><code class="language-config" data-lang="config"><span class="s2">""""""""""""" Airline"""""""""""""""""</span><span class="err">"</span>
+<span class="n">let</span> <span class="n">g</span>:<span class="n">airline</span><span class="c">#extensions#tabline#enabled = 1
+</span>
+
+<span class="s2">""""""""""""</span> <span class="n">Setting</span> <span class="n">for</span> <span class="n">NERDTree</span><span class="s2">""""""""""""""""""</span><span class="err">"</span>
+
+<span class="n">let</span> <span class="n">mapleader</span> = <span class="s2">"z"</span>
+<span class="n">nmap</span> &lt;<span class="n">leader</span>&gt;<span class="n">z</span> :<span class="n">NERDTreeToggle</span>&lt;<span class="n">cr</span>&gt;
+
+<span class="err">"</span> <span class="n">Optional</span> <span class="n">to</span> <span class="n">show</span> <span class="n">special</span> <span class="n">NERDTree</span> <span class="n">browser</span> <span class="n">characters</span> <span class="n">properly</span> (<span class="n">e</span>.<span class="n">g</span>. <span class="n">on</span> <span class="n">remote</span> <span class="n">linux</span> <span class="n">system</span>) 
+<span class="n">let</span> <span class="n">g</span>:<span class="n">NERDTreeDirArrows</span>=<span class="m">0</span>
+
+
+<span class="s2">" Lune numbering "</span>
+<span class="n">set</span> <span class="n">nu</span>
+
+
+<span class="s2">""""""""""" for R setting"""""""""""""""""""""""""</span><span class="err">"</span>
+<span class="n">let</span> <span class="n">R_esc_term</span> = <span class="m">1</span>
+
+<span class="err">"</span> <span class="n">Emulate</span> <span class="n">Tmux</span> ^<span class="n">az</span>
+<span class="n">function</span> <span class="n">ZoomWindow</span>()
+  <span class="n">let</span> <span class="n">cpos</span> = <span class="n">getpos</span>(<span class="s2">"."</span>)
+  <span class="n">tabnew</span> %
+  <span class="n">redraw</span>
+  <span class="n">call</span> <span class="n">cursor</span>(<span class="n">cpos</span>[<span class="m">1</span>], <span class="n">cpos</span>[<span class="m">2</span>])
+  <span class="n">normal</span>! <span class="n">zz</span>
+<span class="n">endfunction</span>
+    
+<span class="n">nmap</span> <span class="n">gz</span> :<span class="n">call</span> <span class="n">ZoomWindow</span>()&lt;<span class="n">CR</span>&gt;
+
+
+<span class="s2">""""""" Copy from https://yufanlu.net/2018/09/03/neovim-python/"""""""</span>
+
+<span class="err">"</span> <span class="n">Configurations</span> <span class="n">Part</span>
+<span class="err">"</span> <span class="n">UI</span> <span class="n">configuration</span>
+<span class="n">syntax</span> <span class="n">on</span>
+<span class="n">syntax</span> <span class="n">enable</span>
+<span class="err">"</span> <span class="n">colorscheme</span>
+<span class="n">let</span> <span class="n">base16colorspace</span>=<span class="m">256</span>
+<span class="n">colorscheme</span> <span class="n">base16</span>-<span class="n">gruvbox</span>-<span class="n">dark</span>-<span class="n">hard</span>
+<span class="n">set</span> <span class="n">background</span>=<span class="n">dark</span>
+<span class="err">"</span> <span class="n">True</span> <span class="n">Color</span> <span class="n">Support</span> <span class="n">if</span> <span class="n">it</span><span class="err">'</span><span class="n">s</span> <span class="n">avaiable</span> <span class="n">in</span> <span class="n">terminal</span>
+<span class="n">if</span> <span class="n">has</span>(<span class="s2">"termguicolors"</span>)
+    <span class="n">set</span> <span class="n">termguicolors</span>
+<span class="n">endif</span>
+<span class="n">if</span> <span class="n">has</span>(<span class="s2">"gui_running"</span>)
+  <span class="n">set</span> <span class="n">guicursor</span>=<span class="n">n</span>-<span class="n">v</span>-<span class="n">c</span>-<span class="n">sm</span>:<span class="n">block</span>,<span class="n">i</span>-<span class="n">ci</span>-<span class="n">ve</span>:<span class="n">block</span>,<span class="n">r</span>-<span class="n">cr</span>-<span class="n">o</span>:<span class="n">blocks</span>
+<span class="n">endif</span>
+<span class="n">set</span> <span class="n">number</span>
+<span class="n">set</span> <span class="n">relativenumber</span>
+<span class="n">set</span> <span class="n">hidden</span>
+<span class="n">set</span> <span class="n">mouse</span>=<span class="n">a</span>
+<span class="n">set</span> <span class="n">noshowmode</span>
+<span class="n">set</span> <span class="n">noshowmatch</span>
+<span class="n">set</span> <span class="n">nolazyredraw</span>
+<span class="err">"</span> <span class="n">Turn</span> <span class="n">off</span> <span class="n">backup</span>
+<span class="n">set</span> <span class="n">nobackup</span>
+<span class="n">set</span> <span class="n">noswapfile</span>
+<span class="n">set</span> <span class="n">nowritebackup</span>
+<span class="err">"</span> <span class="n">Search</span> <span class="n">configuration</span>
+<span class="n">set</span> <span class="n">ignorecase</span>                    <span class="err">"</span> <span class="n">ignore</span> <span class="n">case</span> <span class="n">when</span> <span class="n">searching</span>
+<span class="n">set</span> <span class="n">smartcase</span>                     <span class="err">"</span> <span class="n">turn</span> <span class="n">on</span> <span class="n">smartcase</span>
+<span class="err">"</span> <span class="n">Tab</span> <span class="n">and</span> <span class="n">Indent</span> <span class="n">configuration</span>
+<span class="n">set</span> <span class="n">expandtab</span>
+<span class="n">set</span> <span class="n">tabstop</span>=<span class="m">4</span>
+<span class="n">set</span> <span class="n">shiftwidth</span>=<span class="m">4</span>
+<span class="err">"</span> <span class="n">vim</span>-<span class="n">autoformat</span>
+<span class="n">noremap</span> &lt;<span class="n">F3</span>&gt; :<span class="n">Autoformat</span>&lt;<span class="n">CR</span>&gt;
+<span class="err">"</span> <span class="n">NCM2</span>
+<span class="n">augroup</span> <span class="n">NCM2</span>
+  <span class="n">autocmd</span>!
+  <span class="err">"</span> <span class="n">enable</span> <span class="n">ncm2</span> <span class="n">for</span> <span class="n">all</span> <span class="n">buffers</span>
+  <span class="n">autocmd</span> <span class="n">BufEnter</span> * <span class="n">call</span> <span class="n">ncm2</span><span class="c">#enable_for_buffer()
+</span>  <span class="err">"</span> :<span class="n">help</span> <span class="n">Ncm2PopupOpen</span> <span class="n">for</span> <span class="n">more</span> <span class="n">information</span>
+  <span class="n">set</span> <span class="n">completeopt</span>=<span class="n">noinsert</span>,<span class="n">menuone</span>,<span class="n">noselect</span>
+  <span class="err">"</span> <span class="n">When</span> <span class="n">the</span> &lt;<span class="n">Enter</span>&gt; <span class="n">key</span> <span class="n">is</span> <span class="n">pressed</span> <span class="n">while</span> <span class="n">the</span> <span class="n">popup</span> <span class="n">menu</span> <span class="n">is</span> <span class="n">visible</span>, <span class="n">it</span> <span class="n">only</span>
+  <span class="err">"</span> <span class="n">hides</span> <span class="n">the</span> <span class="n">menu</span>. <span class="n">Use</span> <span class="n">this</span> <span class="n">mapping</span> <span class="n">to</span> <span class="n">close</span> <span class="n">the</span> <span class="n">menu</span> <span class="n">and</span> <span class="n">also</span> <span class="n">start</span> <span class="n">a</span> <span class="n">new</span> <span class="n">line</span>.
+  <span class="s2">" inoremap &lt;expr&gt; &lt;CR&gt; (pumvisible() ? "</span>\&lt;<span class="n">c</span>-<span class="n">y</span>&gt;\&lt;<span class="n">cr</span>&gt;<span class="s2">" : "</span>\&lt;<span class="n">CR</span>&gt;<span class="err">"</span>)
+  <span class="err">"</span> <span class="n">uncomment</span> <span class="n">this</span> <span class="n">block</span> <span class="n">if</span> <span class="n">you</span> <span class="n">use</span> <span class="n">vimtex</span> <span class="n">for</span> <span class="n">LaTex</span>
+  <span class="err">"</span> <span class="n">autocmd</span> <span class="n">Filetype</span> <span class="n">tex</span> <span class="n">call</span> <span class="n">ncm2</span><span class="c">#register_source({
+</span>  <span class="err">"</span>           \ <span class="s1">'name'</span>: <span class="s1">'vimtex'</span>,
+  <span class="err">"</span>           \ <span class="s1">'priority'</span>: <span class="m">8</span>,
+  <span class="err">"</span>           \ <span class="s1">'scope'</span>: [<span class="s1">'tex'</span>],
+  <span class="err">"</span>           \ <span class="s1">'mark'</span>: <span class="s1">'tex'</span>,
+  <span class="err">"</span>           \ <span class="s1">'word_pattern'</span>: <span class="s1">'\w+'</span>,
+  <span class="err">"</span>           \ <span class="s1">'complete_pattern'</span>: <span class="n">g</span>:<span class="n">vimtex</span><span class="c">#re#ncm2,
+</span>  <span class="err">"</span>           \ <span class="s1">'on_complete'</span>: [<span class="s1">'ncm2#on_complete#omni'</span>, <span class="s1">'vimtex#complete#omnifunc'</span>],
+  <span class="err">"</span>           \ })
+<span class="n">augroup</span> <span class="n">END</span>
+<span class="err">"</span> <span class="n">Ale</span>
+<span class="n">let</span> <span class="n">g</span>:<span class="n">ale_lint_on_enter</span> = <span class="m">0</span>
+<span class="n">let</span> <span class="n">g</span>:<span class="n">ale_lint_on_text_changed</span> = <span class="s1">'never'</span>
+<span class="n">let</span> <span class="n">g</span>:<span class="n">ale_echo_msg_error_str</span> = <span class="s1">'E'</span>
+<span class="n">let</span> <span class="n">g</span>:<span class="n">ale_echo_msg_warning_str</span> = <span class="s1">'W'</span>
+<span class="n">let</span> <span class="n">g</span>:<span class="n">ale_echo_msg_format</span> = <span class="s1">'[%linter%] %s [%severity%]'</span>
+<span class="n">let</span> <span class="n">g</span>:<span class="n">ale_linters</span> = {<span class="s1">'python'</span>: [<span class="s1">'flake8'</span>]}
+<span class="err">"</span> <span class="n">Airline</span>
+<span class="n">let</span> <span class="n">g</span>:<span class="n">airline_left_sep</span>  = <span class="s1">''</span>
+<span class="n">let</span> <span class="n">g</span>:<span class="n">airline_right_sep</span> = <span class="s1">''</span>
+<span class="n">let</span> <span class="n">g</span>:<span class="n">airline</span><span class="c">#extensions#ale#enabled = 1
+</span><span class="n">let</span> <span class="n">airline</span><span class="c">#extensions#ale#error_symbol = 'E:'
+</span><span class="n">let</span> <span class="n">airline</span><span class="err">#</span><span class="n">extensions</span><span class="err">#</span><span class="n">ale</span><span class="err">#</span><span class="n">warning_symbol</span> = <span class="s1">'W:'</span></code></pre></figure> <h3> 4. Compatibility with multiple conda environments </h3> <p>For autocompletion, vim needs an active R/Python3 session. By default, the available R/python3 in the active environment is used.</p> <p>In case of python,the following packages are required:</p> <ul> <li> `jedi` package for code completion. </li> <li> `flake8` for code linting. </li> <li> `autopep8` for code formatting. </li> </ul> <p>So these package are required in each conda environment (install using <code class="language-plaintext highlighter-rouge">pip</code>).</p> <p>For R, so far I am not aware of any necessary package.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[another effort to set up environment - neovim]]></summary></entry><entry><title type="html">Vim environment creation</title><link href="https://anoyaro84.github.io/blog/2019/vim-setting/" rel="alternate" type="text/html" title="Vim environment creation"/><published>2019-12-31T15:09:00+00:00</published><updated>2019-12-31T15:09:00+00:00</updated><id>https://anoyaro84.github.io/blog/2019/vim-setting</id><content type="html" xml:base="https://anoyaro84.github.io/blog/2019/vim-setting/"><![CDATA[<p>Here, I would like to keep a note on how I constructed my vim environment. In particular, I need the following features for my python development.</p> <h4 id="my-need-in-the-ideal-world">My need (in the ideal world)</h4> <ul> <li> Syntax support (e.g., highlighting). </li> <li> Autocompletion - for files and variables. </li> <li> Navigate to other files.</li> <li> Compatible with multiple environment, mostly maintained by conda.</li> <li> Good support of snakmake.</li> <li> Interactive python/R session to test the script.</li> </ul> <hr/> <h3> 1. Vim installation </h3> <p>I first updated vim to version 8.2, installing from the source (from the <a href="https://github.com/vim/vim">official github repo</a>. Python should be used to compile vim, using the following options for configuration:</p> <figure class="highlight"><pre><code class="language-shell" data-lang="shell">./configure <span class="nt">--with-features</span><span class="o">=</span>huge <span class="se">\</span>
+            <span class="nt">--enable-multibyte</span> <span class="se">\</span>
+            <span class="nt">--enable-rubyinterp</span><span class="o">=</span><span class="nb">yes</span> <span class="se">\</span>
+            <span class="nt">--enable-python3interp</span><span class="o">=</span><span class="nb">yes</span> <span class="se">\</span>
+            <span class="nt">--with-python3-config-dir</span><span class="o">=</span><span class="si">$(</span>python3-config <span class="nt">--configdir</span><span class="si">)</span> <span class="se">\</span>
+            <span class="nt">--enable-perlinterp</span><span class="o">=</span><span class="nb">yes</span> <span class="se">\</span>
+            <span class="nt">--enable-luainterp</span><span class="o">=</span><span class="nb">yes</span> <span class="se">\</span>
+            <span class="nt">--enable-gui</span><span class="o">=</span>gtk2 <span class="se">\</span>
+            <span class="nt">--enable-cscope</span></code></pre></figure> <p>Check <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source">this thread</a> for dependancy of the installation.</p> <p>In my case (Linux mint), I need to set <code class="language-plaintext highlighter-rouge">LDFLAGS</code> to <code class="language-plaintext highlighter-rouge">-fno-lto</code> before configuration. Otherwise <code class="language-plaintext highlighter-rouge">gcc</code> gave error. (check <a href="https://github.com/halide/Halide/issues/2713">this thread</a>)</p> <h3> 2. Plugin installation with Vundle </h3> <p>Then, plugins are installed using Vundle, mostly conscerns editing <code class="language-plaintext highlighter-rouge">.vimrc</code>. To install Vundle, run the following command (see also the <a href="https://github.com/VundleVim/Vundle.vim">official repository of Vundle</a>).</p> <figure class="highlight"><pre><code class="language-shell" data-lang="shell">git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim</code></pre></figure> <p>To install a plugin with Vundle, add the following in <code class="language-plaintext highlighter-rouge">.vimrc</code>:</p> <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nb">set </span>rtp+<span class="o">=</span>~/.vim/bundle/Vundle.vim
+call vundle#begin<span class="o">()</span>
+
+Plugin <span class="s1">'NAME_OF_THE_PLUGIN'</span>
+
+call vundle#end<span class="o">()</span>            <span class="s2">" required</span></code></pre></figure> <p>Note that for plugins from a github repository can be referred like: <code class="language-plaintext highlighter-rouge">ncm2/ncm2</code>. For the actual installation, execute <code class="language-plaintext highlighter-rouge">:PluginInstall</code> once after starting vim.</p> <p>Key plugins include (final <code class="language-plaintext highlighter-rouge">.vimrc</code> is also available below):</p> <ul> <li><a href="https://github.com/davidhalter/jedi-vim">jedi-vim</a> - python auto-completion support</li> <li><a href="https://github.com/preservim/nerdtree">NERDTree</a> - for browing files in vim</li> <li><a href="https://github.com/jalvesaq/Nvim-R">Nvim-R</a> - for R integration </li> <li><a href="https://github.com/gaalcaras/ncm-R">ncm-R</a> - for asynchronous autocompletion when editing R scripts </li> </ul> <p>Note that <code class="language-plaintext highlighter-rouge">pynvim</code> and <code class="language-plaintext highlighter-rouge">neovim</code> are required for some of the plugins. (install via <code class="language-plaintext highlighter-rouge">conda</code> or <code class="language-plaintext highlighter-rouge">pip</code>)</p> <h3> 3. python sytax support for Snakefile </h3> <p>I obtained the <a href="https://bitbucket.org/jayhesselberth/snakemake/src/master/misc/vim/syntax/snakemake.vim">syntax definition of snakemake</a> for vim by Jay Hesselberth (@ University of Colorado), and then merely added the following line to start <code class="language-plaintext highlighter-rouge">jedi-vim</code>, which is executed only for python files (<code class="language-plaintext highlighter-rouge">.py</code>) by default.</p> <figure class="highlight"><pre><code class="language-shell" data-lang="shell">runtime! ftplugin/python/jedi.vim after/ftplugin/python/jedi.vim</code></pre></figure> <h3> 4. Support to multiple environments by conda </h3> <p>By activating environments using conda (by <code class="language-plaintext highlighter-rouge">conda activate</code>), you can switch R or python version used in vim support. For instance, you will see autocompletion for a python package if the active envrionment have the package installed. Vice versa, if you activate an enviornment that lacks the package, then you will see no autocompletion for this package. Also, if there is an specific version of R installed within an environment, then the very version of R will be used in Nvim-R upon activation of the environment.</p> <p><strong>There is a catch though.</strong> Some plugin may not function properly, if you have different version of python available in the environment. Especially, some plugins require <code class="language-plaintext highlighter-rouge">python 3</code>, so they will not work (at least, not properly) when <code class="language-plaintext highlighter-rouge">python 2</code> is there.</p> <p>Also, you need to install <code class="language-plaintext highlighter-rouge">pynvim</code> and <code class="language-plaintext highlighter-rouge">neovim</code> (from <code class="language-plaintext highlighter-rouge">conda-forge</code> channel) in each environment, using: <code class="language-plaintext highlighter-rouge">conda install -c conda-forge neovim pynvim</code>.</p> <h3> The final outcome files: </h3> <ul> <li> <a href="/assets/scripts/vimrc">.vimrc</a> (to be located at ~/)</li> <li> <a href="/assets/scripts/snakemake.vim">snakmake.vim</a> (to be located at ~/.vim/syntax/) </li> </ul> <hr/> <p>Further reference:</p> <ul> <li> I took the useful vim plugins for Python editing from the following <a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/"> instruction</a>.</li> </ul>]]></content><author><name></name></author><summary type="html"><![CDATA[a note for setting up vim environment]]></summary></entry></feed>
