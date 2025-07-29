@@ -33,7 +33,7 @@ I am an assistant professor in oncogenomics at the Amsterdam Universtiy Medical 
 </p>
 
 <p style="text-align:justify">
-Together with other PIs in the group, I am leading the Tumor Genome Analysis Core (<a href="https://www.tgac.nl">TGAC</a>) of <a href="https://www.vumc.nl/zorg/expertisecentra-en-specialismen/cancer-center-amsterdam.htm">Cancer Center Amsterdam</a>. You can find our projects in <a href="https://github.com/tgac-vumc"> our group Github repository</a> and Projects tab for more details.
+Together with other PIs in the group, I am leading the Tumor Genome Analysis Core (<a href="https://www.tgac.nl">TGAC</a>) of <a href="https://www.vumc.nl/zorg/expertisecentra-en-specialismen/cancer-center-amsterdam.htm">Cancer Center Amsterdam</a>. You can find more about me in <a href="https://anoyaro84.github.io/cv/">CV tab</a>.
 </p>
 
 
